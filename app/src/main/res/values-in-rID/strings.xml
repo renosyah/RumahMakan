@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Rumah Makan</string>
+    <string name="restaurant_near_me_text">RUMAH MAKAN\\nTERDEKAT</string>
+    <string name="explore">Jelajah</string>
+    <string name="class_search_restaurant">Cari Rumah Makan...</string>
+    <string name="detail">Detail</string>
+    <string name="reload">Segarkan</string>
+    <string name="show_route">Tampilkan Rute</string>
+    <string name="show_menu">Tampilkan Menu</string>
+    <string name="understand">Saya Mengerti</string>
+    <string name="no_internet_message">Aplikasi ini tidak dapat berfungsi tanpa koneksi internet, silakan periksa koneksi internet Anda</string>
+    <string name="request_location_message">Harap aktifkan layanan GPS Anda, Aplikasi tidak dapat menunjukkan restoran terdekat tanpa mengetahui lokasi Anda saat ini</string>
+    <string name="list_view">Daftar</string>
+    <string name="map_view">Peta</string>
+    <string name="not_found_text">Tidak Ada Hasil Ditemukan!</string>
+    <string name="not_support_message">Sepertinya perangkat Anda tidak mendukung untuk menjalankan aplikasi ini, Level API minimum yang didukung oleh HERE SDK untuk Android adalah API 21, Android 5.0 (Lollipop)</string>
+    <string name="finding_nearest_restaurant">" Mencari Restoran Terdekat ..."</string>
+    <string name="init_here_map">Menyiapkan Peta...</string>
+    <string name="request_data">Minta Data Detail Restoran ...</string>
+    <string name="init_routing_map">Menyiapkan Rute...</string>
+    <string name="going_to">"Pergi Ke "</string>
+    <string name="minute">mnt</string>
+    <string name="hour">Jam</string>
+</resources>

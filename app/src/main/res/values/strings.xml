@@ -1,0 +1,24 @@
+<resources>
+    <string name="explore">Explore</string>
+    <string name="class_search_restaurant">Search Restaurants...</string>
+    <string name="detail">Detail</string>
+    <string name="reload">Refresh</string>
+    <string name="show_route">Show Route</string>
+    <string name="show_menu">Show Menu</string>
+    <string name="understand">I\'am Understand</string>
+    <string name="no_internet_message">This App cannot working without connection internet, please check your internet connection</string>
+    <string name="request_location_message">Please enable your GPS service, App cannot pin point nearest restaurant without knowing your current location</string>
+    <string name="list_view">List View</string>
+    <string name="map_view">Map View</string>
+    <string name="not_found_text">No Result Found!</string>
+    <string name="not_support_message">Seems like your device does not support to run this app,The minimum API level supported by the HERE SDK for Android is API 21, Android 5.0 (Lollipop)</string>
+    <string name="finding_nearest_restaurant">Searching Nearest Restaurant...</string>
+    <string name="init_here_map">Initialize Map..</string>
+    <string name="request_data">Request Restaurant Details Data...</string>
+    <string name="init_routing_map">Initialize Routing...</string>
+    <string name="going_to">"Going To "</string>
+    <string name="app_name">Restaurant</string>
+    <string name="restaurant_near_me_text">RESTAURANTS NEAR ME</string>
+    <string name="hour">Hr</string>
+    <string name="minute">Min</string>
+</resources>
