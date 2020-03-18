@@ -28,4 +28,6 @@
     <string name="error_finding_nearest_restaurant">Tidak dapat memuat data restoran terdekat, silakan coba lagi ...</string>
     <string name="error_request_data_detail">Tidak dapat memuat restoran data detail, silakan coba lagi ...</string>
     <string name="error_common">Ups, terjadi sesuatu yang salah, coba lagi ...</string>
+    <string name="close">Tutup</string>
+    <string name="about_app">Versi Aplikasi v1.0\n\nIni adalah lokasi di mana Anda saat ini,\nngomong-ngomong ini adalah aplikasi untuk memudahkan Anda menemukan restoran di dekat lokasi Anda.</string>
 </resources>

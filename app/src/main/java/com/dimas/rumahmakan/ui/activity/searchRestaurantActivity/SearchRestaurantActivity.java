@@ -28,6 +28,7 @@ import com.dimas.rumahmakan.ui.activity.detailRestaurantActivity.DetailRestauran
 import com.dimas.rumahmakan.ui.activity.exploreActivity.ExploreActivity;
 import com.dimas.rumahmakan.ui.activity.splashActivity.SplashActivity;
 import com.dimas.rumahmakan.ui.adapter.AdapterRestaurant;
+import com.dimas.rumahmakan.ui.dialog.DialogAboutApp;
 import com.dimas.rumahmakan.ui.dialog.DialogDetailRestaurant;
 import com.dimas.rumahmakan.ui.dialog.DialogNoInternet;
 import com.dimas.rumahmakan.ui.dialog.DialogRequestLocation;
@@ -384,6 +385,12 @@ public class SearchRestaurantActivity extends AppCompatActivity implements Searc
 
                 int id = metadata.getInteger("id");
                 if (id == -1){
+                    new DialogAboutApp(context, new Unit<Boolean>() {
+                        @Override
+                        public void invoke(Boolean o) {
+
+                        }
+                    }).show();
                     return;
                 }
 

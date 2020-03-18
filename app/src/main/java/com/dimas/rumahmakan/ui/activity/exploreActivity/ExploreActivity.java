@@ -34,6 +34,7 @@ import com.dimas.rumahmakan.model.restaurantModel.RestaurantModel;
 import com.dimas.rumahmakan.ui.activity.detailRestaurantActivity.DetailRestaurantActivity;
 import com.dimas.rumahmakan.ui.activity.searchRestaurantActivity.SearchRestaurantActivity;
 import com.dimas.rumahmakan.ui.adapter.AdapterSwipeStackRestaurant;
+import com.dimas.rumahmakan.ui.dialog.DialogAboutApp;
 import com.dimas.rumahmakan.ui.dialog.DialogNoInternet;
 import com.dimas.rumahmakan.ui.dialog.DialogRequestLocation;
 import com.dimas.rumahmakan.ui.util.ErrorLayout;
@@ -392,6 +393,12 @@ public class ExploreActivity extends AppCompatActivity implements ExploreActivit
 
                 int id = metadata.getInteger("id");
                 if (id == -1){
+                    new DialogAboutApp(context, new Unit<Boolean>() {
+                        @Override
+                        public void invoke(Boolean o) {
+
+                        }
+                    }).show();
                     return;
                 }
 

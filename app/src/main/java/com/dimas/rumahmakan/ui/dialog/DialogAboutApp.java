@@ -12,21 +12,21 @@ import android.widget.Button;
 import com.dimas.rumahmakan.R;
 import com.dimas.rumahmakan.util.Unit;
 
-public class DialogNotSupport {
+public class DialogAboutApp {
     private Context context;
     private Unit<Boolean> onOk;
 
-    public DialogNotSupport(Context context, Unit<Boolean> onOk) {
+    public DialogAboutApp(Context context, Unit<Boolean> onOk) {
         this.context = context;
         this.onOk = onOk;
     }
 
     public void show(){
-        View v = ((Activity)context).getLayoutInflater().inflate(R.layout.dialog_not_support,null);
+        View v = ((Activity)context).getLayoutInflater().inflate(R.layout.dialog_about_app,null);
         AlertDialog dialog = new AlertDialog.Builder(context)
                 .create();
 
-        Button ok = v.findViewById(R.id.button_ok);
+        Button ok = v.findViewById(R.id.button_close);
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

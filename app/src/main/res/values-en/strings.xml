@@ -28,4 +28,6 @@
     <string name="error_finding_nearest_restaurant">Cannot load data nearest restaurant, please try again...</string>
     <string name="error_request_data_detail">Cannot load detail data restaurant, please try again...</string>
     <string name="error_common">Oops something wrong happened, please try again...</string>
+    <string name="close">Close</string>
+    <string name="about_app">App Version v1.0\n\nThis is location where you at now,\nbtw this is app to make easy for you to find restaurant near your location.</string>
 </resources>
