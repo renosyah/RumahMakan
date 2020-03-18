@@ -228,7 +228,6 @@ public class ExploreActivity extends AppCompatActivity implements ExploreActivit
                 }
                 setLocationManager();
                 setTapGestureHandler();
-
             }
         });
     }
@@ -239,7 +238,7 @@ public class ExploreActivity extends AppCompatActivity implements ExploreActivit
             new DialogRequestLocation(context, new Unit<Boolean>() {
                 @Override
                 public void invoke(Boolean o) {
-                    startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+
                 }
             }).show();
             return;

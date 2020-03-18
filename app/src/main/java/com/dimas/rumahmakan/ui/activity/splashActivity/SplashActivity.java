@@ -10,14 +10,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.dimas.rumahmakan.BuildConfig;
 import com.dimas.rumahmakan.R;
 import com.dimas.rumahmakan.ui.activity.exploreActivity.ExploreActivity;
+import com.dimas.rumahmakan.ui.dialog.DialogNoInternet;
 import com.dimas.rumahmakan.ui.dialog.DialogNotSupport;
+import com.dimas.rumahmakan.ui.dialog.DialogRequestLocation;
 import com.dimas.rumahmakan.util.Unit;
 
 import java.util.Random;
+
+import static com.dimas.rumahmakan.util.CheckService.isGpsIson;
+import static com.dimas.rumahmakan.util.CheckService.isInternetConnected;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -54,19 +60,39 @@ public class SplashActivity extends AppCompatActivity {
         exploreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (!(android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)) {
-                    new DialogNotSupport(context, new Unit<Boolean>() {
-                        @Override
-                        public void invoke(Boolean o) {
-
-                        }
-                    });
+                if (!isInternetOrGpsOn(context)){
                     return;
                 }
                 startActivity(new Intent(context, ExploreActivity.class));
                 finish();
             }
         });
+
+        isInternetOrGpsOn(context);
+    }
+
+    private boolean isInternetOrGpsOn(Context c){
+
+        boolean internetOn = isInternetConnected(c);
+        boolean gpsOn = isGpsIson(c);
+
+        if (!internetOn){
+            new DialogNoInternet(c, new Unit<Boolean>() {
+                @Override
+                public void invoke(Boolean o) {
+
+                }
+            }).show();
+
+        } else if (!gpsOn){
+            new DialogRequestLocation(c, new Unit<Boolean>() {
+                @Override
+                public void invoke(Boolean o) {
+                    startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                }
+            }).show();
+        }
+
+        return internetOn && gpsOn;
     }
 }

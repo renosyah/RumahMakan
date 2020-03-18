@@ -229,7 +229,7 @@ public class RoutingActivity extends AppCompatActivity  implements RoutingActivi
             new DialogRequestLocation(context, new Unit<Boolean>() {
                 @Override
                 public void invoke(Boolean o) {
-                    startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+
                 }
             }).show();
             return;
