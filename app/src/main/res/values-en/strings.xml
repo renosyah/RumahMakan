@@ -22,4 +22,5 @@
     <string name="going_to">"Going To "</string>
     <string name="hour">Hr</string>
     <string name="minute">Min</string>
+    <string name="search_result_of">Search result of</string>
 </resources>

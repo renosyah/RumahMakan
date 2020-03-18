@@ -144,7 +144,7 @@ public class RoutingActivity extends AppCompatActivity  implements RoutingActivi
 
                 trackingUserRoute.setBackground(
                         isTracking ? ContextCompat.getDrawable(context, R.drawable.rounded_shape) :
-                                ContextCompat.getDrawable(context, android.R.color.transparent)
+                                ContextCompat.getDrawable(context, R.drawable.rounded_shape_white)
                 );
             }
         });

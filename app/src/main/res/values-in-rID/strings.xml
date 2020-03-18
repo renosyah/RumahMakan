@@ -22,4 +22,5 @@
     <string name="going_to">"Pergi Ke "</string>
     <string name="minute">mnt</string>
     <string name="hour">Jam</string>
+    <string name="search_result_of">"Hasil pencarian dari "</string>
 </resources>

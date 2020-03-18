@@ -28,8 +28,8 @@
                 <EditText
                     android:id="@+id/search_restaurant_edittext"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
                     android:background="@android:color/white"
                     android:drawableLeft="@android:drawable/ic_menu_search"
                     android:fontFamily="@string/light_font"
@@ -53,7 +53,7 @@
 
         <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="bottom|center"
             android:clipChildren="false">
 
@@ -61,6 +61,7 @@
                 android:id="@+id/restaurant_swipe_stack"
                 android:layout_width="match_parent"
                 android:layout_height="340dp"
+                android:layout_gravity="bottom"
                 android:padding="15dp"
                 app:stack_rotation="0"
                 app:stack_spacing="-12dp"
@@ -89,7 +90,8 @@
             android:id="@+id/loading_map_layout"
             layout="@layout/loading_map"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            tools:visibility="gone" />
 
         <include
             android:id="@+id/loading_restaurant_layout"
@@ -97,7 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            tools:visibility="visible" />
+            tools:visibility="gone" />
 
     </FrameLayout>
 

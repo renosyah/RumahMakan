@@ -163,28 +163,28 @@ public class ExploreActivity extends AppCompatActivity implements ExploreActivit
         });
         restaurantStackView = findViewById(R.id.restaurant_swipe_stack);
         restaurantStackView.setAdapter(adapterSwipeStackRestaurant);
-        restaurantStackView.setSwipeProgressListener(new SwipeStack.SwipeProgressListener() {
+        restaurantStackView.setListener(new SwipeStack.SwipeStackListener() {
             @Override
-            public void onSwipeStart(int position) {
-
+            public void onViewSwipedToLeft(int position) {
+                this.onViewSwipedToRight(position);
             }
 
             @Override
-            public void onSwipeProgress(int position, float progress) {
-
-            }
-
-            @Override
-            public void onSwipeEnd(int position) {
+            public void onViewSwipedToRight(int position) {
                 if (restaurantModels.size() <= position + 1){
-                    reloadButton.setVisibility(View.VISIBLE);
-                    restaurantStackView.setVisibility(View.GONE);
                     return;
                 }
-                RestaurantModel r = restaurantModels.get(restaurantStackView.getCurrentPosition() + 1);
+
+                RestaurantModel r = restaurantModels.get(position + 1);
                 mapView.getCamera().setTarget(new GeoCoordinates(r.Latitude,r.Longitude));
                 mapView.getCamera().setZoomLevel(ZOOM_LEVEL);
                 mapView.getCamera().setTargetAnchorPoint(new Anchor2D(0.5F, 0.3F));
+            }
+
+            @Override
+            public void onStackEmpty() {
+                reloadButton.setVisibility(View.VISIBLE);
+                restaurantStackView.setVisibility(View.GONE);
             }
         });
 

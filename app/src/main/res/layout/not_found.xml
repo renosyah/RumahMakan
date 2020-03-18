@@ -15,16 +15,17 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/not_found" />
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@string/medium_font"
-            android:textColor="@color/textColorLightGray"
-            android:textSize="24sp"
+            app:srcCompat="@drawable/not_found_map" />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@string/light_font"
+            android:textColor="@color/textColorGray"
+            android:textSize="20sp"
             android:text="@string/not_found_text" />
 
     </LinearLayout>

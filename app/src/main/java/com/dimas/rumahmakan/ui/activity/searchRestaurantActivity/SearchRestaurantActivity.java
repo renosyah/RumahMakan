@@ -131,7 +131,7 @@ public class SearchRestaurantActivity extends AppCompatActivity implements Searc
         mapView.onCreate(savedInstanceState);
 
         searchText = findViewById(R.id.search_result_text);
-        searchText.setText(searchValue);
+        searchText.setText(context.getString(R.string.search_result_of) + "\"" + searchValue + "\"");
 
         imageBack = findViewById(R.id.image_back);
         imageBack.setOnClickListener(new View.OnClickListener() {

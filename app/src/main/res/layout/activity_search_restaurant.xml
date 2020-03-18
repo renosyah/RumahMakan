@@ -30,6 +30,7 @@
 
                 <ImageView
                     android:id="@+id/image_back"
+                    android:padding="10dp"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:scaleType="centerInside"
@@ -38,24 +39,24 @@
                 <TextView
                     android:id="@+id/search_result_text"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
                     android:background="@android:color/white"
-                    android:textColor="@color/textColorBlack"
                     android:fontFamily="@string/light_font"
                     android:gravity="center"
-                    android:hint="@string/class_search_restaurant"
-                    android:maxLines="1"
-                    android:singleLine="true"
                     android:textAlignment="center"
-                    android:textSize="18sp" />
+                    android:minHeight="50dp"
+                    android:text="Search result..."
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="14sp" />
 
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:scaleType="center"
-                    app:srcCompat="@android:drawable/ic_menu_search" />
+                    android:scaleType="center" />
 
             </LinearLayout>
 
@@ -87,7 +88,8 @@
                 layout="@layout/not_found"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="140dp" />
+                android:layout_marginTop="140dp"
+                tools:visibility="gone" />
 
         </LinearLayout>
 
@@ -95,7 +97,8 @@
             android:id="@+id/loading_map_layout"
             layout="@layout/loading_map"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            tools:visibility="gone" />
 
         <include
             android:id="@+id/loading_restaurant_layout"
@@ -103,7 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            tools:visibility="visible" />
+            tools:visibility="gone" />
 
     </FrameLayout>
 
