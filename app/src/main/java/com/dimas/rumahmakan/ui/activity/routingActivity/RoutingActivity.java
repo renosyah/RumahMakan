@@ -27,6 +27,8 @@ import com.dimas.rumahmakan.ui.activity.searchRestaurantActivity.SearchRestauran
 import com.dimas.rumahmakan.ui.activity.splashActivity.SplashActivity;
 import com.dimas.rumahmakan.ui.dialog.DialogNoInternet;
 import com.dimas.rumahmakan.ui.dialog.DialogRequestLocation;
+import com.dimas.rumahmakan.ui.util.ErrorLayout;
+import com.dimas.rumahmakan.ui.util.LoadingLayout;
 import com.dimas.rumahmakan.util.Unit;
 import com.here.sdk.core.Anchor2D;
 import com.here.sdk.core.GeoCoordinates;
@@ -92,15 +94,15 @@ public class RoutingActivity extends AppCompatActivity  implements RoutingActivi
     private ImageView moveToUserLocation;
     private Boolean isTracking = false, isUpdateRoute = true;
 
-    private View loadingMapLayout;
-    private View loadingRoutingLayout;
-
     private LocationManager locationManager;
     private GeoCoordinates userCoordinate;
     private MapMarker userMarker;
 
     private RoutingEngine routingEngine;
     private MapPolyline routeMapPolyline;
+
+    private LoadingLayout loadingLayout;
+    private ErrorLayout errorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,15 +162,24 @@ public class RoutingActivity extends AppCompatActivity  implements RoutingActivi
             }
         });
 
-        loadingMapLayout = findViewById(R.id.loading_map_layout);
-        loadingMapLayout.setVisibility(View.VISIBLE);
+        loadingLayout = new LoadingLayout(context,findViewById(R.id.loading_layout));
+        loadingLayout.setMessage(context.getString(R.string.init_here_map));
 
-        loadingRoutingLayout = findViewById(R.id.loading_route_layout);
-        loadingRoutingLayout.setVisibility(View.VISIBLE);
+        errorLayout = new ErrorLayout(context, findViewById(R.id.error_layout), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(getIntent());
+                finish();
+            }
+        });
+        errorLayout.setMessage(context.getString(R.string.error_common));
 
         loadMapScene();
 
         if (!isInternetConnected(context)) {
+
+            errorLayout.show();
+
             new DialogNoInternet(context, new Unit<Boolean>() {
                 @Override
                 public void invoke(Boolean o) {
@@ -226,6 +237,9 @@ public class RoutingActivity extends AppCompatActivity  implements RoutingActivi
     @SuppressLint("MissingPermission")
     private void setLocationManager(){
         if (!isGpsIson(context)){
+
+            errorLayout.show();
+
             new DialogRequestLocation(context, new Unit<Boolean>() {
                 @Override
                 public void invoke(Boolean o) {
@@ -245,7 +259,6 @@ public class RoutingActivity extends AppCompatActivity  implements RoutingActivi
                         return;
                     }
 
-                    loadingMapLayout.setVisibility(View.GONE);
                     userCoordinate = new GeoCoordinates(location.getLatitude(),location.getLongitude());
 
                     showRouting(new Waypoint(new GeoCoordinates(userCoordinate.latitude,userCoordinate.longitude)),
@@ -290,6 +303,8 @@ public class RoutingActivity extends AppCompatActivity  implements RoutingActivi
 
     private void showRouting(Waypoint startWaypoint, Waypoint destinationWaypoint){
 
+        loadingLayout.setMessage(context.getString(R.string.init_routing_map));
+
         if (routingEngine == null) {
             return;
         }
@@ -302,7 +317,7 @@ public class RoutingActivity extends AppCompatActivity  implements RoutingActivi
                     @Override
                     public void onRouteCalculated(@Nullable RoutingError routingError, @Nullable List<Route> routes) {
 
-                        loadingRoutingLayout.setVisibility(View.GONE);
+                        loadingLayout.hide();
                         removeCurrentRoute();
 
                         if (routingError == null && routes != null && routes.get(0) != null) {

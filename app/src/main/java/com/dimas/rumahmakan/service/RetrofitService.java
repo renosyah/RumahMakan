@@ -20,6 +20,16 @@ import retrofit2.http.Query;
 public interface RetrofitService {
 
     // add more end point to access
+    @GET("api/all_rumah_makan.php")
+    public Observable<ResponseModel<ArrayList<RestaurantModel>>> allRestaurant(
+            @Query("search_by") String searchBy,
+            @Query("search_value") String searchValue,
+            @Query("order_by") String orderBy,
+            @Query("order_dir") String orderDir,
+            @Query("offset") int offset,
+            @Query("limit") int limit
+    );
+
     @GET("api/all_closes_rumah_makan.php")
     public Observable<ResponseModel<ArrayList<RestaurantModel>>> allNearestRestaurant(
             @Query("current_latitude") double curLatitude,

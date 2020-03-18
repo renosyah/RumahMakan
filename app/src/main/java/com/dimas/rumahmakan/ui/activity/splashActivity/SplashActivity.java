@@ -60,39 +60,10 @@ public class SplashActivity extends AppCompatActivity {
         exploreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isInternetOrGpsOn(context)){
-                    return;
-                }
                 startActivity(new Intent(context, ExploreActivity.class));
                 finish();
             }
         });
 
-        isInternetOrGpsOn(context);
-    }
-
-    private boolean isInternetOrGpsOn(Context c){
-
-        boolean internetOn = isInternetConnected(c);
-        boolean gpsOn = isGpsIson(c);
-
-        if (!internetOn){
-            new DialogNoInternet(c, new Unit<Boolean>() {
-                @Override
-                public void invoke(Boolean o) {
-
-                }
-            }).show();
-
-        } else if (!gpsOn){
-            new DialogRequestLocation(c, new Unit<Boolean>() {
-                @Override
-                public void invoke(Boolean o) {
-                    startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-                }
-            }).show();
-        }
-
-        return internetOn && gpsOn;
     }
 }

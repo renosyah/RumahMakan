@@ -8,24 +8,25 @@ import com.dimas.rumahmakan.ui.activity.detailRestaurantActivity.DetailRestauran
 
 import java.util.ArrayList;
 
+import retrofit2.http.Query;
+
 public class SearchRestaurantActivityContract {
     public interface View extends BaseContract.View {
         // add more for response
-        public void onGetAllNearestRestaurant(@Nullable ArrayList<RestaurantModel> restaurantModels);
-        public void showProgressAllNearestRestaurant(Boolean show);
-        public void showErrorAllNearestRestaurant(String error);
+        public void onGetAllRestaurant(@Nullable ArrayList<RestaurantModel> restaurantModels);
+        public void showProgressAllRestaurant(Boolean show);
+        public void showErrorAllRestaurant(String error);
 
     }
     public interface Presenter extends BaseContract.Presenter<View> {
         // add for request
-        public void getAllNearestRestaurant(double curLatitude,
-                                            double curLongitude,
-                                            double range,
-                                            String searchBy,
-                                            String searchValue,
-                                            int offset,
-                                            int limit,
-                                            boolean enableLoading
+        public void getAllRestaurant(String searchBy,
+                                     String searchValue,
+                                     String orderBy,
+                                     String orderDir,
+                                     int offset,
+                                     int limit,
+                                     boolean enableLoading
         );
     }
 }

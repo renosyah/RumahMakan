@@ -216,8 +216,15 @@
     </ScrollView>
 
     <include
-        android:id="@+id/loading_detail_data_layout"
-        layout="@layout/loading_data_detail"
+        android:id="@+id/loading_layout"
+        layout="@layout/loading_data_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:visibility="gone" />
+
+    <include
+        android:id="@+id/error_layout"
+        layout="@layout/error_message_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:visibility="gone" />

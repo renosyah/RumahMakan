@@ -141,19 +141,19 @@
         </FrameLayout>
 
         <include
-            android:id="@+id/loading_route_layout"
-            layout="@layout/loading_route"
+            android:id="@+id/loading_layout"
+            layout="@layout/loading_data_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            tools:visibility="gone" />
+            tools:visibility="visible" />
 
         <include
-            android:id="@+id/loading_map_layout"
-            layout="@layout/loading_map"
+            android:id="@+id/error_layout"
+            layout="@layout/error_message_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:visibility="gone" />
+            tools:visibility="visible" />
 
     </FrameLayout>
 

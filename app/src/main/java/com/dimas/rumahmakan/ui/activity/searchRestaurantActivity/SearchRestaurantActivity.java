@@ -31,6 +31,8 @@ import com.dimas.rumahmakan.ui.adapter.AdapterRestaurant;
 import com.dimas.rumahmakan.ui.dialog.DialogDetailRestaurant;
 import com.dimas.rumahmakan.ui.dialog.DialogNoInternet;
 import com.dimas.rumahmakan.ui.dialog.DialogRequestLocation;
+import com.dimas.rumahmakan.ui.util.ErrorLayout;
+import com.dimas.rumahmakan.ui.util.LoadingLayout;
 import com.dimas.rumahmakan.util.SerializableSave;
 import com.dimas.rumahmakan.util.StaticVariabel;
 import com.dimas.rumahmakan.util.Unit;
@@ -85,7 +87,7 @@ public class SearchRestaurantActivity extends AppCompatActivity implements Searc
     private AdapterRestaurant adapterRestaurant;
     private int offset = 0,limit = 10;
     private String searchBy = "nama",searchValue = "";
-    private double range = BuildConfig.MIN_RADIUS;
+    private String orderBy = "nama",orderDir = "asc";
 
     private View notFoundLayout;
     private View layoutList;
@@ -94,8 +96,8 @@ public class SearchRestaurantActivity extends AppCompatActivity implements Searc
     private GeoCoordinates userCoordinate;
     private MapMarker userMarker;
 
-    private View loadingRestaurantLayout;
-    private View loadingMapLayout;
+    private LoadingLayout loadingLayout;
+    private ErrorLayout errorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,11 +123,17 @@ public class SearchRestaurantActivity extends AppCompatActivity implements Searc
         presenter.attach(this);
         presenter.subscribe();
 
-        loadingRestaurantLayout = findViewById(R.id.loading_restaurant_layout);
-        loadingRestaurantLayout.setVisibility(View.GONE);
+        loadingLayout = new LoadingLayout(context,findViewById(R.id.loading_layout));
+        loadingLayout.setMessage(context.getString(R.string.init_here_map));
 
-        loadingMapLayout = findViewById(R.id.loading_map_layout);
-        loadingMapLayout.setVisibility(View.VISIBLE);
+        errorLayout = new ErrorLayout(context, findViewById(R.id.error_layout), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(getIntent());
+                finish();
+            }
+        });
+        errorLayout.setMessage(context.getString(R.string.error_common));
 
         mapView = findViewById(R.id.map_view);
         mapView.onCreate(savedInstanceState);
@@ -207,9 +215,12 @@ public class SearchRestaurantActivity extends AppCompatActivity implements Searc
         chooseMap.performClick();
     }
 
-    private void getAllNearestRestaurant(GeoCoordinates userCoordinate){
-        presenter.getAllNearestRestaurant(
-                userCoordinate.latitude,userCoordinate.longitude,range,searchBy,searchValue,offset,limit,true
+    private void getAllRestaurant(GeoCoordinates userCoordinate){
+
+        loadingLayout.setMessage(context.getString(R.string.finding_nearest_restaurant));
+
+        presenter.getAllRestaurant(
+                searchBy,searchValue,orderBy,orderDir,offset,limit,true
         );
     }
 
@@ -232,6 +243,9 @@ public class SearchRestaurantActivity extends AppCompatActivity implements Searc
     @SuppressLint("MissingPermission")
     private void setLocationManager(){
         if (!isGpsIson(context)){
+
+            errorLayout.show();
+
             new DialogRequestLocation(context, new Unit<Boolean>() {
                 @Override
                 public void invoke(Boolean o) {
@@ -246,11 +260,9 @@ public class SearchRestaurantActivity extends AppCompatActivity implements Searc
                         @Override
                         public void onLocationChanged(Location location) {
 
-                            loadingMapLayout.setVisibility(View.GONE);
-
                             // only call once
                             if (userCoordinate == null){
-                                getAllNearestRestaurant(new GeoCoordinates(location.getLatitude(),location.getLongitude()));
+                                getAllRestaurant(new GeoCoordinates(location.getLatitude(),location.getLongitude()));
                             }
 
                             userCoordinate = new GeoCoordinates(location.getLatitude(),location.getLongitude());
@@ -293,7 +305,7 @@ public class SearchRestaurantActivity extends AppCompatActivity implements Searc
     // ------------ //
 
     @Override
-    public void onGetAllNearestRestaurant(@Nullable ArrayList<RestaurantModel> all) {
+    public void onGetAllRestaurant(@Nullable ArrayList<RestaurantModel> all) {
         if (all != null){
             for (RestaurantModel r : all){
                 r.Distance = r.calculateDistance(userCoordinate);
@@ -312,13 +324,16 @@ public class SearchRestaurantActivity extends AppCompatActivity implements Searc
     }
 
     @Override
-    public void showProgressAllNearestRestaurant(Boolean show) {
-        loadingRestaurantLayout.setVisibility(show ? View.VISIBLE : View.GONE);
+    public void showProgressAllRestaurant(Boolean show) {
+        loadingLayout.setVisibility(show);
     }
 
     @Override
-    public void showErrorAllNearestRestaurant(String error) {
-
+    public void showErrorAllRestaurant(String error) {
+        if (BuildConfig.DEBUG){
+            errorLayout.setMessage(error);
+        }
+        errorLayout.show();
     }
 
     // ------------ //

@@ -36,6 +36,8 @@ import com.dimas.rumahmakan.ui.activity.searchRestaurantActivity.SearchRestauran
 import com.dimas.rumahmakan.ui.adapter.AdapterSwipeStackRestaurant;
 import com.dimas.rumahmakan.ui.dialog.DialogNoInternet;
 import com.dimas.rumahmakan.ui.dialog.DialogRequestLocation;
+import com.dimas.rumahmakan.ui.util.ErrorLayout;
+import com.dimas.rumahmakan.ui.util.LoadingLayout;
 import com.dimas.rumahmakan.util.Unit;
 import com.here.sdk.core.Anchor2D;
 import com.here.sdk.core.GeoCoordinates;
@@ -92,8 +94,8 @@ public class ExploreActivity extends AppCompatActivity implements ExploreActivit
     private GeoCoordinates userCoordinate;
     private MapMarker userMarker;
 
-    private View loadingRestaurantLayout;
-    private View loadingMapLayout;
+    private LoadingLayout loadingMessageLayout;
+    private ErrorLayout errorMessageLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,11 +114,17 @@ public class ExploreActivity extends AppCompatActivity implements ExploreActivit
         mapView = findViewById(R.id.map_view);
         mapView.onCreate(savedInstanceState);
 
-        loadingRestaurantLayout = findViewById(R.id.loading_restaurant_layout);
-        loadingRestaurantLayout.setVisibility(View.GONE);
+        loadingMessageLayout = new LoadingLayout(context,findViewById(R.id.loading_layout));
+        loadingMessageLayout.setMessage(context.getString(R.string.init_here_map));
 
-        loadingMapLayout = findViewById(R.id.loading_map_layout);
-        loadingMapLayout.setVisibility(View.VISIBLE);
+        errorMessageLayout = new ErrorLayout(context, findViewById(R.id.error_layout), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(getIntent());
+                finish();
+            }
+        });
+        errorMessageLayout.setMessage(context.getString(R.string.error_common));
 
         searchRestaurant = findViewById(R.id.search_restaurant_edittext);
         searchRestaurant.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -199,6 +207,9 @@ public class ExploreActivity extends AppCompatActivity implements ExploreActivit
         });
 
         if (!isInternetConnected(context)){
+
+            errorMessageLayout.show();
+
             new DialogNoInternet(context, new Unit<Boolean>() {
                 @Override
                 public void invoke(Boolean o) {
@@ -209,6 +220,8 @@ public class ExploreActivity extends AppCompatActivity implements ExploreActivit
     }
 
     private void getAllNearestRestaurant(GeoCoordinates userCoordinate, boolean loading){
+
+        loadingMessageLayout.setMessage(context.getString(R.string.finding_nearest_restaurant));
 
         presenter.getAllNearestRestaurant(
                 userCoordinate.latitude,userCoordinate.longitude,range,searchBy,searchValue,offset,limit,loading
@@ -235,6 +248,9 @@ public class ExploreActivity extends AppCompatActivity implements ExploreActivit
     @SuppressLint("MissingPermission")
     private void setLocationManager(){
         if (!isGpsIson(context)){
+
+            errorMessageLayout.show();
+
             new DialogRequestLocation(context, new Unit<Boolean>() {
                 @Override
                 public void invoke(Boolean o) {
@@ -248,8 +264,6 @@ public class ExploreActivity extends AppCompatActivity implements ExploreActivit
             locationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER, new LocationListener() {
                         @Override
                         public void onLocationChanged(Location location) {
-
-                            loadingMapLayout.setVisibility(View.GONE);
 
                             // only call once
                             if (userCoordinate == null){
@@ -312,12 +326,15 @@ public class ExploreActivity extends AppCompatActivity implements ExploreActivit
 
     @Override
     public void showProgressAllNearestRestaurant(Boolean show) {
-        loadingRestaurantLayout.setVisibility(show ? View.VISIBLE : View.GONE);
+        loadingMessageLayout.setVisibility(show);
     }
 
     @Override
     public void showErrorAllNearestRestaurant(String error) {
-        Toast.makeText(context,error,Toast.LENGTH_LONG).show();
+        if (BuildConfig.DEBUG){
+            errorMessageLayout.setMessage(error);
+        }
+        errorMessageLayout.show();
     }
 
     // ------------ //

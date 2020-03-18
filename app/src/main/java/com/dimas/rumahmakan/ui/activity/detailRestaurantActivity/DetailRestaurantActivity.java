@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.dimas.rumahmakan.BuildConfig;
 import com.dimas.rumahmakan.R;
 import com.dimas.rumahmakan.di.component.ActivityComponent;
 import com.dimas.rumahmakan.di.component.DaggerActivityComponent;
@@ -22,6 +23,8 @@ import com.dimas.rumahmakan.ui.activity.routingActivity.RoutingActivity;
 import com.dimas.rumahmakan.ui.activity.searchRestaurantActivity.SearchRestaurantActivity;
 import com.dimas.rumahmakan.ui.activity.splashActivity.SplashActivity;
 import com.dimas.rumahmakan.ui.dialog.DialogNoInternet;
+import com.dimas.rumahmakan.ui.util.ErrorLayout;
+import com.dimas.rumahmakan.ui.util.LoadingLayout;
 import com.dimas.rumahmakan.util.Unit;
 import com.squareup.picasso.Picasso;
 
@@ -53,7 +56,8 @@ public class DetailRestaurantActivity extends AppCompatActivity implements  Deta
 
     private RestaurantModel restaurantModel;
 
-    private View loadingDetailData;
+    private LoadingLayout loadingDetailData;
+    private ErrorLayout errorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +77,17 @@ public class DetailRestaurantActivity extends AppCompatActivity implements  Deta
         presenter.attach(this);
         presenter.subscribe();
 
-        loadingDetailData = findViewById(R.id.loading_detail_data_layout);
-        loadingDetailData.setVisibility(View.VISIBLE);
+        loadingDetailData = new LoadingLayout(context,findViewById(R.id.loading_layout));
+        loadingDetailData.setMessage(context.getString(R.string.request_data));
+
+        errorLayout = new ErrorLayout(context, findViewById(R.id.error_layout), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(getIntent());
+                finish();
+            }
+        });
+        errorLayout.setMessage(context.getString(R.string.error_common));
 
         imageRestaurant = findViewById(R.id.restaurant_image);
 
@@ -140,18 +153,15 @@ public class DetailRestaurantActivity extends AppCompatActivity implements  Deta
 
     @Override
     public void showProgressOneRestaurant(Boolean show) {
-        loadingDetailData.setVisibility(show ? View.VISIBLE : View.GONE);
+        loadingDetailData.setVisibility(show);
     }
 
     @Override
     public void showErrorOneRestaurant(String error) {
-        new DialogNoInternet(context, new Unit<Boolean>() {
-            @Override
-            public void invoke(Boolean o) {
-                startActivity(new Intent(context, ExploreActivity.class));
-                finish();
-            }
-        }).show();
+        if (BuildConfig.DEBUG){
+            errorLayout.setMessage(error);
+        }
+        errorLayout.show();
     }
 
     // ------------ //

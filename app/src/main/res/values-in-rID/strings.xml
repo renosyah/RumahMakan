@@ -20,7 +20,12 @@
     <string name="request_data">Minta Data Detail Rumah Makan...</string>
     <string name="init_routing_map">Menyiapkan Rute...</string>
     <string name="going_to">"Pergi Ke "</string>
-    <string name="minute">mnt</string>
+    <string name="minute">Mnt</string>
     <string name="hour">Jam</string>
     <string name="search_result_of">"Hasil pencarian dari "</string>
+    <string name="try_again">Coba Lagi</string>
+    <string name="error_init_here_map">Tidak dapat menginisialisasi peta, silakan coba lagi ...</string>
+    <string name="error_finding_nearest_restaurant">Tidak dapat memuat data restoran terdekat, silakan coba lagi ...</string>
+    <string name="error_request_data_detail">Tidak dapat memuat restoran data detail, silakan coba lagi ...</string>
+    <string name="error_common">Ups, terjadi sesuatu yang salah, coba lagi ...</string>
 </resources>

@@ -19,33 +19,33 @@ public class SearchRestaurantActivityPresenter implements SearchRestaurantActivi
     private SearchRestaurantActivityContract.View view;
 
     @Override
-    public void getAllNearestRestaurant(double curLatitude, double curLongitude, double range, String searchBy, String searchValue, int offset, int limit, boolean enableLoading) {
+    public void getAllRestaurant(String searchBy, String searchValue, String orderBy, String orderDir, int offset, int limit, boolean enableLoading) {
         if (enableLoading) {
-            view.showProgressAllNearestRestaurant(true);
+            view.showProgressAllRestaurant(true);
         }
-        Disposable subscribe = api.allNearestRestaurant(curLatitude,curLongitude,range,searchBy,searchValue,offset,limit)
+        Disposable subscribe = api.allRestaurant(searchBy,searchValue,orderBy,orderDir,offset,limit)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<ResponseModel<ArrayList<RestaurantModel>>>() {
                     @Override
                     public void accept(ResponseModel<ArrayList<RestaurantModel>> result) throws Exception {
                         if (enableLoading) {
-                            view.showProgressAllNearestRestaurant(false);
+                            view.showProgressAllRestaurant(false);
                         }
                         if (result != null){
                             if (result.Error != null && !result.Error.isEmpty()){
-                                view.showErrorAllNearestRestaurant(result.Error);
+                                view.showErrorAllRestaurant(result.Error);
                             }
-                            view.onGetAllNearestRestaurant(result.Data);
+                            view.onGetAllRestaurant(result.Data);
                         }
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         if (enableLoading) {
-                            view.showProgressAllNearestRestaurant(false);
+                            view.showProgressAllRestaurant(false);
                         }
-                        view.showErrorAllNearestRestaurant(throwable.getMessage());
+                        view.showErrorAllRestaurant(throwable.getMessage());
                     }
                 });
 
@@ -66,6 +66,5 @@ public class SearchRestaurantActivityPresenter implements SearchRestaurantActivi
     public void attach(SearchRestaurantActivityContract.View view) {
         this.view = view;
     }
-
 
 }

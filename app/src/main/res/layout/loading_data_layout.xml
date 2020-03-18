@@ -24,10 +24,11 @@
             android:indeterminateTint="@color/textColorGreen" />
 
         <TextView
+            android:id="@+id/loading_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@string/light_font"
-            android:text="@string/request_data"
+            android:text="@string/init_routing_map"
             android:textColor="@color/textColorBlack"
             android:textSize="18sp" />
 
