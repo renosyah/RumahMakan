@@ -16,12 +16,15 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -82,6 +85,7 @@ public class ExploreActivity extends AppCompatActivity implements ExploreActivit
     private MapViewLite mapView;
 
     private EditText searchRestaurant;
+    private ImageView goSearch;
 
     private SwipeStack restaurantStackView;
     private ArrayList<RestaurantModel> restaurantModels = new ArrayList<>();
@@ -125,7 +129,7 @@ public class ExploreActivity extends AppCompatActivity implements ExploreActivit
             }
         });
         tutorialLayout.setMessage(context.getString(R.string.tutorial_swipe));
-        tutorialLayout.setImage(R.drawable.tutorial_swipe);
+        tutorialLayout.setImage(R.drawable.tutorial_swipe_restaurant);
 
         loadingMessageLayout = new LoadingLayout(context,findViewById(R.id.loading_layout));
         loadingMessageLayout.setMessage(context.getString(R.string.init_here_map));
@@ -140,18 +144,47 @@ public class ExploreActivity extends AppCompatActivity implements ExploreActivit
         errorMessageLayout.setMessage(context.getString(R.string.error_common));
 
         searchRestaurant = findViewById(R.id.search_restaurant_edittext);
+        searchRestaurant.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                goSearch.setVisibility(searchRestaurant.getText().toString().trim().isEmpty() ? View.INVISIBLE : View.VISIBLE);
+            }
+        });
         searchRestaurant.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    Intent i = new Intent(context, SearchRestaurantActivity.class);
-                    i.putExtra("data",searchRestaurant.getText().toString());
-                    i.putExtra("back_to",BACK_TO_EXPLORE_ACTIVITY);
-                    startActivity(i);
-                    finish();
+                    goSearch.performClick();
                     return true;
                 }
                 return false;
+            }
+        });
+
+
+        goSearch = findViewById(R.id.go_search);
+        goSearch.setVisibility(View.INVISIBLE);
+        goSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (searchRestaurant.getText().toString().trim().isEmpty()){
+                    return;
+                }
+                Intent i = new Intent(context, SearchRestaurantActivity.class);
+                i.putExtra("data",searchRestaurant.getText().toString());
+                i.putExtra("back_to",BACK_TO_EXPLORE_ACTIVITY);
+                startActivity(i);
+                finish();
             }
         });
 

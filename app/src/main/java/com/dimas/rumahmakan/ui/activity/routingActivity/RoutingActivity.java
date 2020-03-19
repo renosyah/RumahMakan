@@ -29,6 +29,7 @@ import com.dimas.rumahmakan.ui.dialog.DialogNoInternet;
 import com.dimas.rumahmakan.ui.dialog.DialogRequestLocation;
 import com.dimas.rumahmakan.ui.util.ErrorLayout;
 import com.dimas.rumahmakan.ui.util.LoadingLayout;
+import com.dimas.rumahmakan.ui.util.TutorialLayout;
 import com.dimas.rumahmakan.util.Unit;
 import com.here.sdk.core.Anchor2D;
 import com.here.sdk.core.GeoCoordinates;
@@ -69,6 +70,7 @@ import static com.dimas.rumahmakan.util.StaticVariabel.BACK_TO_SEARCH_ACTIVITY;
 import static com.dimas.rumahmakan.util.StaticVariabel.BACK_TO_SPLASH_ACTIVITY;
 import static com.dimas.rumahmakan.util.StaticVariabel.LOCATION_REFRESH_DISTANCE;
 import static com.dimas.rumahmakan.util.StaticVariabel.LOCATION_REFRESH_TIME;
+import static com.dimas.rumahmakan.util.StaticVariabel.TUTOR_ROUTE;
 import static com.dimas.rumahmakan.util.StaticVariabel.ZOOM_LEVEL;
 import static com.dimas.rumahmakan.util.StaticVariabel.createRestaurantMarker;
 import static com.dimas.rumahmakan.util.StaticVariabel.createUserMarker;
@@ -101,6 +103,7 @@ public class RoutingActivity extends AppCompatActivity  implements RoutingActivi
     private RoutingEngine routingEngine;
     private MapPolyline routeMapPolyline;
 
+    private TutorialLayout tutorialLayout;
     private LoadingLayout loadingLayout;
     private ErrorLayout errorLayout;
 
@@ -161,6 +164,15 @@ public class RoutingActivity extends AppCompatActivity  implements RoutingActivi
                 }
             }
         });
+
+        tutorialLayout = new TutorialLayout(context, TUTOR_ROUTE, findViewById(R.id.tutorial_layout), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tutorialLayout.hide();
+            }
+        });
+        tutorialLayout.setImage(R.drawable.tutorial_routing);
+        tutorialLayout.setMessage(context.getString(R.string.tutorial_route));
 
         loadingLayout = new LoadingLayout(context,findViewById(R.id.loading_layout));
         loadingLayout.setMessage(context.getString(R.string.init_here_map));
@@ -327,8 +339,13 @@ public class RoutingActivity extends AppCompatActivity  implements RoutingActivi
 
                             int meter = routes.get(0).getLengthInMeters();
                             int km = meter / 1000;
+                            String dis = km > 0 ? " (" + km + " Km)" : " (" + meter + " M)";
 
-                            durration.setText(hour + " "+ context.getString(R.string.hour) + " " + minute + " "+ context.getString(R.string.minute) + " (" + km + " Km)");
+                            durration.setText(
+                                    hour > 0 ?
+                                    hour + " "+ context.getString(R.string.hour) + " " + minute + " "+ context.getString(R.string.minute) + dis :
+                                    minute + " "+ context.getString(R.string.minute) + dis
+                            );
 
                             try {
 

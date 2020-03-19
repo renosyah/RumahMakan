@@ -28,6 +28,7 @@ public class StaticVariabel {
     public static final int ZOOM_LEVEL = 16;
     public static final String LAST_SEARCH = "LAST_SEARCH.dat";
     public static final String TUTOR_SWIPE = "TUTOR_SWIPE.dat";
+    public static final String TUTOR_ROUTE = "TUTOR_ROUTE.dat";
 
     public static MapMarker createRestaurantMarker(Context c, RestaurantModel restaurantModel){
 

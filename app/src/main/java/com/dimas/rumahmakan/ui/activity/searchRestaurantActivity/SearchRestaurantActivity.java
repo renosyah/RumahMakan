@@ -218,7 +218,7 @@ public class SearchRestaurantActivity extends AppCompatActivity implements Searc
 
     private void getAllRestaurant(GeoCoordinates userCoordinate){
 
-        loadingLayout.setMessage(context.getString(R.string.finding_nearest_restaurant));
+        loadingLayout.setMessage(context.getString(R.string.finding_restaurant));
 
         presenter.getAllRestaurant(
                 searchBy,searchValue,orderBy,orderDir,offset,limit,true
