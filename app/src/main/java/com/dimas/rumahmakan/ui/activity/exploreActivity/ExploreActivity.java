@@ -39,6 +39,8 @@ import com.dimas.rumahmakan.ui.dialog.DialogNoInternet;
 import com.dimas.rumahmakan.ui.dialog.DialogRequestLocation;
 import com.dimas.rumahmakan.ui.util.ErrorLayout;
 import com.dimas.rumahmakan.ui.util.LoadingLayout;
+import com.dimas.rumahmakan.ui.util.TutorialLayout;
+import com.dimas.rumahmakan.util.StaticVariabel;
 import com.dimas.rumahmakan.util.Unit;
 import com.here.sdk.core.Anchor2D;
 import com.here.sdk.core.GeoCoordinates;
@@ -95,6 +97,7 @@ public class ExploreActivity extends AppCompatActivity implements ExploreActivit
     private GeoCoordinates userCoordinate;
     private MapMarker userMarker;
 
+    private TutorialLayout tutorialLayout;
     private LoadingLayout loadingMessageLayout;
     private ErrorLayout errorMessageLayout;
 
@@ -114,6 +117,15 @@ public class ExploreActivity extends AppCompatActivity implements ExploreActivit
 
         mapView = findViewById(R.id.map_view);
         mapView.onCreate(savedInstanceState);
+
+        tutorialLayout = new TutorialLayout(context, StaticVariabel.TUTOR_SWIPE, findViewById(R.id.tutorial_layout), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tutorialLayout.hide();
+            }
+        });
+        tutorialLayout.setMessage(context.getString(R.string.tutorial_swipe));
+        tutorialLayout.setImage(R.drawable.tutorial_swipe);
 
         loadingMessageLayout = new LoadingLayout(context,findViewById(R.id.loading_layout));
         loadingMessageLayout.setMessage(context.getString(R.string.init_here_map));

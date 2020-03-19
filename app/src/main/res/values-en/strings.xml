@@ -30,4 +30,5 @@
     <string name="error_common">Oops something wrong happened, please try again...</string>
     <string name="close">Close</string>
     <string name="about_app">App Version v1.0\n\nThis is location where you at now,\nbtw this is app to make easy for you to find restaurant near your location.</string>
+    <string name="tutorial_swipe">Navigate to next restaurant, just swipe away the current stack</string>
 </resources>
