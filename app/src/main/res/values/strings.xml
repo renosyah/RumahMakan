@@ -39,4 +39,5 @@
     <string name="back">Back</string>
     <string name="statistic_title">Statistics on the number of culinary tourism in the Special Region of Yogyakarta</string>
     <string name="statistic">Statistic</string>
+    <string name="init_chart">Initialize diagram...</string>
 </resources>

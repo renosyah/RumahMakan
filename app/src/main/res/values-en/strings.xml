@@ -33,10 +33,11 @@
     <string name="tutorial_swipe">Navigate to next Culinary tour, just swipe away the current stack</string>
     <string name="finding_restaurant">Finding Culinary tour...</string>
     <string name="tutorial_route">This is Routing page. to move camera to your position, press circle icon with x inside of it, to focus on navigate press arrow button</string>
-    <string name="indonesian_food">" Authentic Indonesian cuisine"</string>
-    <string name="local_restaurant">" Typical culinary city of Yogyakarta"</string>
-    <string name="your_new_experience">" Enjoy the Culinary Experience"</string>
+    <string name="indonesian_food">"Authentic indonesian\ncuisine"</string>
+    <string name="local_restaurant">"Typical culinary\ncity of Yogyakarta"</string>
+    <string name="your_new_experience">"Enjoy the Culinary\nExperience"</string>
     <string name="back">Back</string>
     <string name="statistic_title">Statistics on the number of culinary tourism in the Special Region of Yogyakarta</string>
     <string name="statistic">Statistic</string>
+    <string name="init_chart">Initialize diagram...</string>
 </resources>

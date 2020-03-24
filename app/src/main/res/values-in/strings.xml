@@ -39,4 +39,5 @@
     <string name="statistic_title">Statistik jumlah wisata kuliner di Daerah Istimewa Yogyakarta</string>
     <string name="back">Kembali</string>
     <string name="statistic">Statistik</string>
+    <string name="init_chart">Menyiapkan diagram...</string>
 </resources>

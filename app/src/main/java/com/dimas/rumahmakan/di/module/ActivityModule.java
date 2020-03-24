@@ -10,6 +10,8 @@ import com.dimas.rumahmakan.ui.activity.routingActivity.RoutingActivityContract;
 import com.dimas.rumahmakan.ui.activity.routingActivity.RoutingActivityPresenter;
 import com.dimas.rumahmakan.ui.activity.searchRestaurantActivity.SearchRestaurantActivityContract;
 import com.dimas.rumahmakan.ui.activity.searchRestaurantActivity.SearchRestaurantActivityPresenter;
+import com.dimas.rumahmakan.ui.activity.statistikActivity.StatistikActivityContract;
+import com.dimas.rumahmakan.ui.activity.statistikActivity.StatistikActivityPresenter;
 
 import dagger.Module;
 import dagger.Provides;
@@ -47,5 +49,10 @@ public class ActivityModule {
     @Provides
     public RoutingActivityContract.Presenter provideRoutingActivityPresenter() {
         return new RoutingActivityPresenter();
+    }
+
+    @Provides
+    public StatistikActivityContract.Presenter provideStatistikActivityPresenter() {
+        return new StatistikActivityPresenter();
     }
 }

@@ -10,5 +10,6 @@
     <color name="textColorLightGray">@android:color/darker_gray</color>
     <color name="textColorBlue">#5686EC</color>
     <color name="textColorGreen">#2FD99B</color>
+    <color name="textColorGreenDark">#009A62</color>
     <color name="textColorRed">#F44336</color>
 </resources>

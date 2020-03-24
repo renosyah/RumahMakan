@@ -85,6 +85,10 @@ dependencies {
 
     // stackview
     implementation 'link.fls:swipestack:0.3.0'
+
+    // any chart
+    implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
+
 }
 kapt {
     generateStubs = true

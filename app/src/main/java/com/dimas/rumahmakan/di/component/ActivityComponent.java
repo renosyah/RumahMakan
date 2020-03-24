@@ -5,6 +5,7 @@ import com.dimas.rumahmakan.ui.activity.detailRestaurantActivity.DetailRestauran
 import com.dimas.rumahmakan.ui.activity.exploreActivity.ExploreActivity;
 import com.dimas.rumahmakan.ui.activity.routingActivity.RoutingActivity;
 import com.dimas.rumahmakan.ui.activity.searchRestaurantActivity.SearchRestaurantActivity;
+import com.dimas.rumahmakan.ui.activity.statistikActivity.StatistikActivity;
 
 import dagger.Component;
 
@@ -16,4 +17,5 @@ public interface ActivityComponent {
     void inject(DetailRestaurantActivity detailRestaurantActivity);
     void inject(SearchRestaurantActivity searchRestaurantActivity);
     void inject(RoutingActivity routingActivity);
+    void inject(StatistikActivity statistikActivity);
 }

@@ -1,6 +1,7 @@
 package com.dimas.rumahmakan.service;
 
 import com.dimas.rumahmakan.BuildConfig;
+import com.dimas.rumahmakan.model.cityModel.CityModel;
 import com.dimas.rumahmakan.model.responseModel.ResponseModel;
 import com.dimas.rumahmakan.model.restaurantModel.RestaurantModel;
 import com.google.gson.Gson;
@@ -44,7 +45,15 @@ public interface RetrofitService {
     public Observable<ResponseModel<RestaurantModel>> oneRestaurant(
             @Query("id") int id
     );
-
+    @GET("api/all_kota.php")
+    public Observable<ResponseModel<ArrayList<CityModel>>> allCity(
+            @Query("search_by") String searchBy,
+            @Query("search_value") String searchValue,
+            @Query("order_by") String orderBy,
+            @Query("order_dir") String orderDir,
+            @Query("offset") int offset,
+            @Query("limit") int limit
+    );
 
     public static RetrofitService create()  {
 
