@@ -17,7 +17,8 @@
         android:roundIcon="@drawable/icon_app"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.routingActivity.RoutingActivity"></activity>
+        <activity android:name=".ui.activity.statistikActivity.StatistikActivity"></activity>
+        <activity android:name=".ui.activity.routingActivity.RoutingActivity" />
         <activity android:name=".ui.activity.searchRestaurantActivity.SearchRestaurantActivity" />
         <activity android:name=".ui.activity.detailRestaurantActivity.DetailRestaurantActivity" />
         <activity android:name=".ui.activity.exploreActivity.ExploreActivity" />

@@ -1,81 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.splashActivity.SplashActivity">
+    tools:context=".ui.activity.statistikActivity.StatistikActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/food_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:scaleType="fitXY"
-            android:src="@drawable/food_1" />
+            app:srcCompat="@drawable/food_3" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:scaleType="fitXY"
-            android:src="@drawable/blur_half" />
+            app:srcCompat="@drawable/blur_half" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_margin="40dp"
             android:orientation="vertical">
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/diagram" />
+
             <TextView
-                android:id="@+id/message_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@string/medium_font"
-                android:textStyle="bold"
-                android:text="@string/restaurant_near_me_text"
+                android:gravity="center"
+                android:text="@string/statistic_title"
                 android:textColor="@color/textColorGray"
-                android:textSize="32sp" />
+                android:textSize="24sp" />
 
             <Button
-                android:layout_marginTop="30dp"
-                android:paddingStart="80dp"
-                android:paddingEnd="80dp"
-                android:minHeight="50dp"
-                android:id="@+id/button_explore"
+                android:id="@+id/button_back"
                 style="@style/AppTheme.RoundedCornerMaterialButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/explore"
-                android:fontFamily="@string/light_font"
-                android:textAllCaps="false"
-                android:textColor="@color/textColorWhite"
-                android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/button_statistic"
-                style="@style/AppTheme.RoundedCornerMaterialButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_gravity="center|bottom"
                 android:layout_marginTop="30dp"
+                android:layout_marginBottom="40dp"
                 android:fontFamily="@string/light_font"
                 android:minHeight="50dp"
                 android:paddingStart="80dp"
                 android:paddingEnd="80dp"
-                android:text="@string/statistic"
+                android:text="@string/back"
                 android:textAllCaps="false"
                 android:textColor="@color/textColorWhite"
                 android:textSize="20sp" />
-
         </LinearLayout>
 
 
     </FrameLayout>
-
 
 </LinearLayout>

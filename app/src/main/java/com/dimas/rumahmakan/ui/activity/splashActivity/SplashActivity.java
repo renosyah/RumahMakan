@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.dimas.rumahmakan.R;
 import com.dimas.rumahmakan.ui.activity.exploreActivity.ExploreActivity;
+import com.dimas.rumahmakan.ui.activity.statistikActivity.StatistikActivity;
 
 import java.util.Random;
 
@@ -22,6 +23,7 @@ public class SplashActivity extends AppCompatActivity {
     private ImageView foodImage;
     private TextView messageText;
     private Button exploreButton;
+    private Button buttonStatistic;
 
     int[] foodImages = {
             R.drawable.food_1,
@@ -64,6 +66,14 @@ public class SplashActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(context, ExploreActivity.class));
                 finish();
+            }
+        });
+
+        buttonStatistic = findViewById(R.id.button_statistic);
+        buttonStatistic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, StatistikActivity.class));
             }
         });
 

@@ -36,4 +36,7 @@
     <string name="indonesian_food">Masakan asli Indonesia</string>
     <string name="local_restaurant">Kuliner khas kota Yogyakarta</string>
     <string name="your_new_experience">" Nikmati Pengalaman Kuliner"</string>
+    <string name="statistic_title">Statistik jumlah wisata kuliner di Daerah Istimewa Yogyakarta</string>
+    <string name="back">Kembali</string>
+    <string name="statistic">Statistik</string>
 </resources>
