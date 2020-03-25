@@ -458,7 +458,7 @@ public class ExploreActivity extends AppCompatActivity implements ExploreActivit
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == MY_PERMISSIONS_REQUEST_LOCATION && ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+        if (requestCode == MY_PERMISSIONS_REQUEST_LOCATION){
             startActivity(new Intent(context,ExploreActivity.class));
             finish();
         }
