@@ -1,5 +1,36 @@
 # Project Rumah Makan With HERE MAP
 
+is an android project application to find information and routes to culinary attractions in DIY
+
+## Overview
+
+* splash screen
+
+![GitHub Logo](/img/splash.jpg) 
+
+
+* explore
+
+![GitHub Logo](/img/explore.jpg) 
+
+
+* search
+
+![GitHub Logo](/img/search_map.jpg)  ![GitHub Logo](/img/search_list.jpg) 
+
+
+* detail
+
+![GitHub Logo](/img/detail.jpg) 
+
+
+* routing
+
+![GitHub Logo](/img/routing.jpg) 
+
+
+
+
 ## How to linked to your here map developer account
 
 - login to your here map dev account here : [Here Map Dev](https://developer.here.com/login)
@@ -53,33 +84,10 @@ Goals
 sumber : [github.com/google/gson](https://github.com/google/gson)
 
 
+## Other Library
 
-
-
-## Overview
-
-* splash screen
-
-![GitHub Logo](/img/splash.jpg) 
-
-
-* explore
-
-![GitHub Logo](/img/explore.jpg) 
-
-
-* search
-
-![GitHub Logo](/img/search_map.jpg)  ![GitHub Logo](/img/search_list.jpg) 
-
-
-* detail
-
-![GitHub Logo](/img/detail.jpg) 
-
-
-* routing
-
-![GitHub Logo](/img/routing.jpg) 
+* [SwipeStack by flschweiger](https://github.com/flschweiger/SwipeStack)
+* [AnyChart-Android by AnyChart](https://github.com/AnyChart/AnyChart-Android)
+* [picasso by square](https://square.github.io/picasso/)
 
 
