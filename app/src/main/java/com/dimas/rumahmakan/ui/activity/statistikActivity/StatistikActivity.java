@@ -22,6 +22,7 @@ import com.dimas.rumahmakan.di.component.ActivityComponent;
 import com.dimas.rumahmakan.di.component.DaggerActivityComponent;
 import com.dimas.rumahmakan.di.module.ActivityModule;
 import com.dimas.rumahmakan.model.cityModel.CityModel;
+import com.dimas.rumahmakan.ui.dialog.DialogNoInternet;
 import com.dimas.rumahmakan.ui.util.ErrorLayout;
 import com.dimas.rumahmakan.ui.util.LoadingLayout;
 
@@ -31,8 +32,11 @@ import com.anychart.enums.Anchor;
 import com.anychart.enums.HoverMode;
 import com.anychart.enums.Position;
 import com.anychart.enums.TooltipPositionMode;
+import com.dimas.rumahmakan.util.Unit;
 
 import javax.inject.Inject;
+
+import static com.dimas.rumahmakan.util.CheckService.isInternetConnected;
 
 public class StatistikActivity extends AppCompatActivity implements StatistikActivityContract.View {
 
@@ -94,6 +98,15 @@ public class StatistikActivity extends AppCompatActivity implements StatistikAct
                 finish();
             }
         });
+
+        if (!isInternetConnected(context)) {
+            new DialogNoInternet(context, new Unit<Boolean>() {
+                @Override
+                public void invoke(Boolean o) {
+
+                }
+            }).show();
+        }
 
         getAllCity();
     }
