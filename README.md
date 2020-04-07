@@ -1,6 +1,6 @@
 # Project Rumah Makan With HERE MAP
 
-is an android project application to find information and routes to culinary attractions in DIY
+adalah aplikasi proyek android untuk menemukan informasi dan rute ke objek wisata kuliner di DIY
 
 ## Overview
 
@@ -31,22 +31,22 @@ is an android project application to find information and routes to culinary att
 
 
 
-## How to linked to your here map developer account
+## Cara menautkan ke akun pengembang peta Anda di sini
 
-- login to your here map dev account here : [Here Map Dev](https://developer.here.com/login)
-- download android library `.aar` and `credentials.properties`
-- put `credentials.properties` into the root directory of project
-- extract zip file which contain the `.aar` file and put into the `/app/libs` directory
+- masuk ke akun dev peta Anda di sini : [Here Map Dev](https://developer.here.com/login)
+- download pustaka android `.aar` dan `credentials.properties`
+- letakan `credentials.properties` direktori proyek
+- extract file zip yg mana file tersebut mengandung pustaka `.aar` lalu letakan di direktory `/app/libs`
 
 
 ## MVP Architecture
 
-Model-View-Presenter or commonly abbreviated as MVP is an application development architecture concept that separates the appearance of applications with business processes that work on the application. This architecture will make our application development more structured, easy to test and also easy to maintain.
+Model-View-Presenter atau yang biasa disingkat menjadi MVP adalah sebuah konsep arsitektur pengembangan aplikasi yang memisahkan antara tampilan aplikasi dengan proses bisnis yang bekerja pada aplikasi. Arsitektur ini akan membuat pengembangan aplikasi kita menjadi lebih terstuktur, mudah di-test dan juga mudah di-maintain.
 
-Following is an explanation of each layer in MVP.
-- View, is a layer for displaying data and interaction to users. View is usually in the form of Activity, Fragment or Dialog on Android. This view also directly communicates with the user.
-- Model, which is a layer that points to objects and data in an application.
-- Presenter, is the layer that connects communication between Model and View. Every interaction conducted by the user will call the Presenter to process it and access the Model and then return the response back to the View.
+Berikut penjelasan masing-masing layer pada MVP.
+- View, merupakan layer untuk menampilkan data dan interaksi ke user. View biasanya berupa Activity, Fragment atau Dialog di Android. View ini juga yang langsung berkomunikasi dengan user.
+- Model, merupakan layer yang menunjuk kepada objek dan data yang ada pada aplikasi.
+- Presenter, merupakan layer yang menghubungkan komunikasi antara Model dan View. Setiap interaksi yang dilakukan oleh user akan memanggil Presenter untuk memrosesnya dan mengakses Model lalu mengembalikan responnya kembali kepada View.
 
 
 sumber : [medium MVP by Eminarti Sianturi
@@ -55,11 +55,10 @@ sumber : [medium MVP by Eminarti Sianturi
 sumber : [github.com/MindorksOpenSource/android-mvp-architecture](https://github.com/MindorksOpenSource/android-mvp-architecture)
 
 
-
 ## Retrofit
 
-Type-safe HTTP client for Android and Java by Square, Inc.
-For more information please see the website.
+Klien HTTP yang aman untuk Android dan Java oleh Square, Inc.
+Untuk informasi lebih lanjut silakan lihat situs web.
 
 
 sumber : [square.github.io/retrofit](https://square.github.io/retrofit)
@@ -69,22 +68,21 @@ sumber : [square.github.io/retrofit](https://square.github.io/retrofit)
 
 ## Gson
 
-Gson is a Java library that can be used to convert Java Objects into their JSON representation. It can also be used to convert a JSON string to an equivalent Java object. Gson can work with arbitrary Java objects including pre-existing objects that you do not have source-code of.
+Gson adalah pustaka Java yang dapat digunakan untuk mengubah Java Objects menjadi representasi JSON mereka. Itu juga dapat digunakan untuk mengonversi string JSON ke objek Java yang setara. Gson dapat bekerja dengan objek Java yang arbitrer termasuk objek yang sudah ada sebelumnya yang tidak Anda miliki kode sumbernya.
+Ada beberapa proyek open-source yang dapat mengkonversi objek Java ke JSON. Namun, kebanyakan dari mereka mengharuskan Anda menempatkan anotasi Java di kelas Anda; sesuatu yang tidak dapat Anda lakukan jika Anda tidak memiliki akses ke kode sumber. Sebagian besar juga tidak sepenuhnya mendukung penggunaan Java Generics. Gson menganggap kedua hal ini sebagai tujuan desain yang sangat penting.
 
-There are a few open-source projects that can convert Java objects to JSON. However, most of them require that you place Java annotations in your classes; something that you can not do if you do not have access to the source-code. Most also do not fully support the use of Java Generics. Gson considers both of these as very important design goals.
-
-Goals
-* Provide simple toJson() and fromJson() methods to convert Java objects to JSON and vice-versa
-* Allow pre-existing unmodifiable objects to be converted to and from JSON
-* Extensive support of Java Generics
-* Allow custom representations for objects
-* Support arbitrarily complex objects (with deep inheritance hierarchies and extensive use of generic types)
+Tujuan
+* Memberikan metode toJson () dan fromJson () yang sederhana untuk mengonversi objek Java ke JSON dan sebaliknya
+* Izinkan objek yang tidak dimodifikasi yang sudah ada sebelumnya dikonversi ke dan dari JSON
+* Dukungan luas dari Java Generics
+* Izinkan representasi khusus untuk objek
+* Mendukung objek kompleks yang sewenang-wenang (dengan hierarki warisan yang dalam dan penggunaan tipe generik yang ekstensif)
 
 
 sumber : [github.com/google/gson](https://github.com/google/gson)
 
 
-## Other Library
+## Pustaka Lainnya
 
 * [SwipeStack by flschweiger](https://github.com/flschweiger/SwipeStack)
 * [AnyChart-Android by AnyChart](https://github.com/AnyChart/AnyChart-Android)
