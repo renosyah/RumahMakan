@@ -2,5 +2,8 @@ package com.dimas.rumahmakan.model;
 
 import java.io.Serializable;
 
-public class BaseModel implements Serializable {
-}
+
+// ini adalah class base model
+// untuk mempermudah menserelisasikan
+// model
+public class BaseModel implements Serializable { }
