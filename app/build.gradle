@@ -88,6 +88,7 @@ dependencies {
 
     // any chart
     implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
 }
 kapt {

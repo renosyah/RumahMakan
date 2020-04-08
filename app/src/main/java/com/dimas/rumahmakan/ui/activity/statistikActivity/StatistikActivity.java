@@ -3,12 +3,16 @@ package com.dimas.rumahmakan.ui.activity.statistikActivity;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
@@ -22,6 +26,7 @@ import com.dimas.rumahmakan.di.component.ActivityComponent;
 import com.dimas.rumahmakan.di.component.DaggerActivityComponent;
 import com.dimas.rumahmakan.di.module.ActivityModule;
 import com.dimas.rumahmakan.model.cityModel.CityModel;
+import com.dimas.rumahmakan.ui.adapter.AdapterCityModel;
 import com.dimas.rumahmakan.ui.dialog.DialogNoInternet;
 import com.dimas.rumahmakan.ui.util.ErrorLayout;
 import com.dimas.rumahmakan.ui.util.LoadingLayout;
@@ -47,6 +52,8 @@ public class StatistikActivity extends AppCompatActivity implements StatistikAct
     private AnyChartView chart;
     private Button back;
 
+    private RecyclerView listDescription;
+    private AdapterCityModel adapterCityModel;
     private ArrayList<CityModel> cityModels = new ArrayList<>();
     private int offset = 0,limit = 10;
     private String searchBy = "nama",searchValue = "";
@@ -77,6 +84,11 @@ public class StatistikActivity extends AppCompatActivity implements StatistikAct
                 loadingLayout.setVisibility(false);
             }
         });
+
+        listDescription = findViewById(R.id.list_description);
+        adapterCityModel = new AdapterCityModel(context,cityModels);
+        listDescription.setAdapter(adapterCityModel);
+        listDescription.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false));
 
         loadingLayout = new LoadingLayout(context,findViewById(R.id.loading_layout));
         loadingLayout.setMessage(context.getString(R.string.init_chart));
@@ -149,6 +161,7 @@ public class StatistikActivity extends AppCompatActivity implements StatistikAct
         column.selected().stroke(green + " 4");
 
         cartesian.yAxis(0).labels().format("{%Value}{groupsSeparator: }");
+        cartesian.xAxis(0).labels().fontSize(8);
 
         cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
         cartesian.interactivity().hoverMode(HoverMode.BY_X);
@@ -160,6 +173,10 @@ public class StatistikActivity extends AppCompatActivity implements StatistikAct
 
     }
 
+    private void showDescription(){
+        adapterCityModel.notifyDataSetChanged();
+    }
+
     // ------------- //
 
     @Override
@@ -168,6 +185,7 @@ public class StatistikActivity extends AppCompatActivity implements StatistikAct
             cityModels.addAll(all);
         }
         showStatistic();
+        showDescription();
     }
 
     @Override
