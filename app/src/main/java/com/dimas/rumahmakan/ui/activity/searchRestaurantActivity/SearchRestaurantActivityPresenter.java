@@ -28,6 +28,7 @@ public class SearchRestaurantActivityPresenter implements SearchRestaurantActivi
     // deklarasi view
     private SearchRestaurantActivityContract.View view;
 
+    // fungsi yg akan dipanggil untuk mendapatkan data pencarian wisata kuliner
     @Override
     public void getAllRestaurant(String searchBy, String searchValue, String orderBy, String orderDir, int offset, int limit, boolean enableLoading) {
 

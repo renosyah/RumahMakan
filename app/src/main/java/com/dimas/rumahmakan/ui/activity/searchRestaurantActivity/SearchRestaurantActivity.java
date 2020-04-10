@@ -804,5 +804,4 @@ public class SearchRestaurantActivity extends AppCompatActivity implements Searc
         // memanggil fungsi inject
         listcomponent.inject(this);
     }
-
 }
