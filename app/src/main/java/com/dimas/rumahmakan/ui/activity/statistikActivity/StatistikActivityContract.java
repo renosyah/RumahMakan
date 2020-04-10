@@ -18,13 +18,14 @@ public class StatistikActivityContract {
 
     public interface Presenter extends BaseContract.Presenter<View> {
         // add for request
-        public void getAllCity(String searchBy,
-                                     String searchValue,
-                                     String orderBy,
-                                     String orderDir,
-                                     int offset,
-                                     int limit,
-                                     boolean enableLoading
+        public void getAllCity(
+                String searchBy,
+                String searchValue,
+                String orderBy,
+                String orderDir,
+                int offset,
+                int limit,
+                boolean enableLoading
         );
     }
 }
