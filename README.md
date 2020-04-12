@@ -38,6 +38,7 @@ adalah aplikasi proyek android untuk menemukan informasi dan rute ke objek wisat
 - letakan `credentials.properties` direktori proyek
 - extract file zip yg mana file tersebut mengandung pustaka `.aar` lalu letakan di direktory `/app/libs`
 
+atau download disini : [Google Drive](https://drive.google.com/open?id=1YonGysXJw8dUktOQL3KzdkNWwglpCX3u)
 
 ## MVP Architecture
 
